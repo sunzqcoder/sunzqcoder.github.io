@@ -6,20 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>Objective-C 基础概念 | Madao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;  
-1.1 Objective">
+  <meta name="description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;1.1 Objective-CO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C 基础概念">
 <meta property="og:url" content="http://sunzqcoder.github.io/2016/02/22/Objective-C-基础概念/index.html">
 <meta property="og:site_name" content="Madao's Blog">
-<meta property="og:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;  
-1.1 Objective">
+<meta property="og:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;1.1 Objective-CO">
 <meta property="og:image" content="http://sunzqcoder.github.io/2016/02/22/Objective-C-基础概念/OC基础概念-01.png">
-<meta property="og:updated_time" content="2016-02-25T10:41:09.000Z">
+<meta property="og:updated_time" content="2016-02-25T10:45:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C 基础概念">
-<meta name="twitter:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;  
-1.1 Objective">
+<meta name="twitter:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;1.1 Objective-CO">
   
     <link rel="alternative" href="/atom.xml" title="Madao&#39;s Blog" type="application/atom+xml">
   
@@ -213,8 +210,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"><a href="#&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;" class="headerlink" title="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"></a>&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;</h5><p><br>  </p>
-<h3 id="1-1-Objective-C"><a href="#1-1-Objective-C" class="headerlink" title="1.1 Objective-C"></a>1.1 Objective-C</h3><p>Objective-C&#x662F;&#x5728;C&#x8BED;&#x8A00;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x52A0;&#x5165;&#x4E86;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5B83;&#x5B8C;&#x5168;&#x517C;&#x5BB9;C&#x8BED;&#x8A00;&#xFF0C;&#x662F;OS X &#x548C; iOS &#x7684;&#x4E3B;&#x8981;&#x5F00;&#x53D1;&#x8BED;&#x8A00;&#x3002;</p>
+        <h5 id="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"><a href="#&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;" class="headerlink" title="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"></a>&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;</h5><h3 id="1-1-Objective-C"><a href="#1-1-Objective-C" class="headerlink" title="1.1 Objective-C"></a>1.1 Objective-C</h3><p>Objective-C&#x662F;&#x5728;C&#x8BED;&#x8A00;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x52A0;&#x5165;&#x4E86;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5B83;&#x5B8C;&#x5168;&#x517C;&#x5BB9;C&#x8BED;&#x8A00;&#xFF0C;&#x662F;OS X &#x548C; iOS &#x7684;&#x4E3B;&#x8981;&#x5F00;&#x53D1;&#x8BED;&#x8A00;&#x3002;</p>
 <h3 id="1-2-Hello-World"><a href="#1-2-Hello-World" class="headerlink" title="1.2 Hello World"></a>1.2 Hello World</h3><pre><code>#import &lt;foundation/Foundation.h&gt;
 int main (int argc, const char *argv[]){
     @autoreleasepool{

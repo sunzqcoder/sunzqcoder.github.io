@@ -6,19 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>Objective-C 类和对象 | Madao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;
-&amp;#x7C7B;&amp;#x548C">
+  <meta name="description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x7C7B;&amp;#x548C;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C 类和对象">
 <meta property="og:url" content="http://sunzqcoder.github.io/2016/02/23/Objective-C 类和对象/index.html">
 <meta property="og:site_name" content="Madao's Blog">
-<meta property="og:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;
-&amp;#x7C7B;&amp;#x548C">
-<meta property="og:updated_time" content="2016-02-25T10:41:21.000Z">
+<meta property="og:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x7C7B;&amp;#x548C;">
+<meta property="og:updated_time" content="2016-02-25T10:45:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C 类和对象">
-<meta name="twitter:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;
-&amp;#x7C7B;&amp;#x548C">
+<meta name="twitter:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x7C7B;&amp;#x548C;">
   
     <link rel="alternative" href="/atom.xml" title="Madao&#39;s Blog" type="application/atom+xml">
   
@@ -212,8 +209,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"><a href="#&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;" class="headerlink" title="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"></a>&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;</h5><p><br></p>
-<h2 id="&#x7C7B;&#x548C;&#x5BF9;&#x8C61;"><a href="#&#x7C7B;&#x548C;&#x5BF9;&#x8C61;" class="headerlink" title="&#x7C7B;&#x548C;&#x5BF9;&#x8C61;"></a>&#x7C7B;&#x548C;&#x5BF9;&#x8C61;</h2><p>1.&#x7C7B;&#x7684;&#x6982;&#x5FF5;</p>
+        <h5 id="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"><a href="#&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;" class="headerlink" title="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"></a>&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;</h5><h2 id="&#x7C7B;&#x548C;&#x5BF9;&#x8C61;"><a href="#&#x7C7B;&#x548C;&#x5BF9;&#x8C61;" class="headerlink" title="&#x7C7B;&#x548C;&#x5BF9;&#x8C61;"></a>&#x7C7B;&#x548C;&#x5BF9;&#x8C61;</h2><p>1.&#x7C7B;&#x7684;&#x6982;&#x5FF5;</p>
 <p>&#x7C7B;&#x662F;&#x5BF9;&#x540C;&#x4E00;&#x7C7B;&#x4E8B;&#x7269;&#x7684;&#x62BD;&#x8C61;&#xFF0C;&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x8FD9;&#x4E00;&#x7C7B;&#x5BF9;&#x8C61;&#x4E2D;&#x6240;&#x5177;&#x6709;&#x7684;&#x9759;&#x6001;&#x5C5E;&#x6027;(&#x5C5E;&#x6027;)&#x548C;&#x52A8;&#x6001;&#x5C5E;&#x6027;(&#x65B9;&#x6CD5;)&#x3002;</p>
 <p>2.&#x7C7B;&#x548C;&#x5BF9;&#x8C61;</p>
 <p>&#x5BF9;&#x8C61;&#x662F;&#x7C7B;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x4E8B;&#x7269;&#xFF0C;&#x7C7B;&#x4E0E;&#x5BF9;&#x8C61;&#x662F;&#x62BD;&#x8C61;&#x4E0E;&#x5177;&#x4F53;&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
