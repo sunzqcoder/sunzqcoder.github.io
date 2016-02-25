@@ -203,131 +203,6 @@
 <h2 id="&#x534F;&#x8BAE;-protocol"><a href="#&#x534F;&#x8BAE;-protocol" class="headerlink" title="&#x534F;&#x8BAE; (protocol)"></a>&#x534F;&#x8BAE; (protocol)</h2><p>1.&#x534F;&#x8BAE;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;</p>
 <p>&#x534F;&#x8BAE;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x7ED3;&#x6784;&#xFF0C;&#x7528;&#x4E8E;&#x58F0;&#x660E;&#x4E13;&#x95E8;&#x88AB;&#x5176;&#x4ED6;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x534F;&#x8BAE;&#x5728;&#x4EE5;&#x4E0B;&#x573A;&#x5408;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF1A;</p>
 <p>&#xB7; &#x9700;&#x8981;&#x7531;&#x5176;&#x4ED6;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002;<br>&#xB7; &#x58F0;&#x660E;&#x672A;&#x77E5;&#x7C7B;&#x7684;&#x63A5;&#x53E3;&#x3002;<br>&#xB7; &#x4E24;&#x4E2A;&#x7C7B;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x3002;</p>
-<p>2.&#x534F;&#x8BAE;&#x7684;&#x5B9A;&#x4E49;&#x53CA;&#x4F7F;&#x7528;</p>
-<pre><code>@protocol &#x534F;&#x8BAE;&#x540D; &lt;&#x7236;&#x534F;&#x8BAE;&gt;
-
-&#x58F0;&#x660E;&#x65B9;&#x6CD5;
-
-@end
-</code></pre><p>&#x534F;&#x8BAE;&#x7684;&#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x5B57;</p>
-<p>@required&#xFF1A;&#x8868;&#x793A;&#x5FC5;&#x987B;&#x5F3A;&#x5236;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x3002;<br>@optional&#xFF1A;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x6709;&#x9009;&#x62E9;&#x6027;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x3002;</p>
-<p>&#x534F;&#x8BAE;&#x7684;&#x58F0;&#x660E;&#xFF1A;</p>
-<pre><code>@protocol HelloProtocol &lt;NSObject&gt;
-
-@optional
-- (void)optionalMethod;
-
-@required
-- (void)requiredMethod;
-
-@end
-</code></pre><p>&#x534F;&#x8BAE;&#x7684;&#x4F7F;&#x7528;</p>
-<pre><code>@interface Person : NSObject &lt;HelloProtocol&gt;
-
-@end
-</code></pre><p>&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#xFF0C;&#x5373; Person &#x7C7B;&#x540C;&#x65F6;&#x4F7F;&#x7528; HelloProtocol &#x548C; OtherProtocol &#x4E24;&#x4E2A;&#x534F;&#x8BAE;&#x3002;</p>
-<p>&#x53EF;&#x4EE5;&#x5C06;&#x591A;&#x4E2A;&#x7C7B;&#x4E2D;&#x5171;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x653E;&#x5230;&#x534F;&#x8BAE;&#x4E2D;&#xFF0C;&#x8BA9;&#x8FD9;&#x4E9B;&#x7C7B;&#x90FD;&#x9075;&#x5B88;&#x8FD9;&#x4E2A;&#x534F;&#x8BAE;&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;&#x534F;&#x8BAE;&#x91CC;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5373;&#x53EF;&#x62E5;&#x6709;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x6548;&#x51CF;&#x5C11;&#x4EE3;&#x7801;&#x7684;&#x91CD;&#x590D;&#x6027;&#x3002;</p>
-<h2 id="&#x59D4;&#x6258;&#x6A21;&#x5F0F;-delegate"><a href="#&#x59D4;&#x6258;&#x6A21;&#x5F0F;-delegate" class="headerlink" title="&#x59D4;&#x6258;&#x6A21;&#x5F0F; (delegate)"></a>&#x59D4;&#x6258;&#x6A21;&#x5F0F; (delegate)</h2><p>1.&#x6982;&#x5FF5;</p>
-<p>&#x59D4;&#x6258;&#x662F;&#x6307;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x673A;&#x4F1A;&#x5BF9;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x884C;&#x4E3A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x505A;&#x51FA;&#x7684;&#x53CD;&#x5E94;&#xFF0C;&#x5176;&#x57FA;&#x672C;&#x601D;&#x60F3;&#x4E3A;&#xFF0C;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x534F;&#x540C;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x3002;</p>
-<p>&#x4F8B;&#x5982;&#x5BF9;&#x8C61; A &#x6709;&#x4E00;&#x9879;&#x4E8B;&#x60C5;&#x9700;&#x8981;&#x505A;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x8C61; A &#x4E0D;&#x81EA;&#x5DF1;&#x505A;&#xFF0C;&#x4ED6;&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61; B &#x6765;&#x505A;&#x3002;</p>
-<p>&#x5373; A &#x6709;&#x9700;&#x6C42;&#x4F46;&#x4E0D;&#x76F4;&#x63A5;&#x505A;&#xFF0C;&#x901A;&#x8FC7; Delegate &#x59D4;&#x6258;&#x7ED9; B &#x53BB;&#x505A;&#x3002;</p>
-<p>&#x59D4;&#x6258;&#x662F; Objective-C &#x4E2D;&#x7684;&#x4E00;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x4E0E;&#x534F;&#x8BAE;&#x7684;&#x4F7F;&#x7528;&#x662F;&#x5206;&#x4E0D;&#x5F00;&#x7684;&#x3002;</p>
-<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5728;&#x73ED;&#x7EA7;&#x91CC;&#xFF0C;&#x6559;&#x5E08;&#x8D1F;&#x8D23;&#x6559;&#x5BFC;&#x5B66;&#x751F;&#x548C;&#x6279;&#x6539;&#x4F5C;&#x4E1A;&#xFF0C;&#x800C;&#x6536;&#x53D6;&#x4F5C;&#x4E1A;&#x548C;&#x4F20;&#x8FBE;&#x8001;&#x5E08;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x5219;&#x6709;&#x52A9;&#x6559;&#x5B8C;&#x6210;&#x3002;</p>
-<p>&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x52A9;&#x6559;&#x534F;&#x8BAE;&#xFF1A; </p>
-<p>assistantProtocol.h</p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-
-@protocol assistantProtocol &lt;NSObject&gt;
-
-- (void)notice;                 //&#x901A;&#x77E5;&#x6D88;&#x606F;
-- (void)collectHomeWork;        //&#x6536;&#x53D6;&#x4F5C;&#x4E1A;
-
-@end
-</code></pre><p>&#x7136;&#x540E;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x52A9;&#x6559;&#x7C7B;&#xFF1A;</p>
-<p>Assistant.h</p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-#import &quot;assistantProtocol.h&quot;
-
-@interface Assistant : NSObject &lt;assistantProtocol&gt;  //&#x5B9E;&#x73B0; assistantProtocol &#x534F;&#x8BAE;
-
-@end
-</code></pre><p>Assistant.m</p>
-<pre><code>#import &quot;Assistant.h&quot;
-
-@implementation Assistant
-
-//&#x901A;&#x77E5;&#x4FE1;&#x606F;
-- (void)notice{
-    NSLog(@&quot;Notice Message.&quot;);
-}
-
-//&#x6536;&#x53D6;&#x4F5C;&#x4E1A;
-- (void)collectHomeWork{
-    NSLog(@&quot;Collect the HomeWork.&quot;);
-}
-
-@end
-</code></pre><p>&#x6559;&#x5E08;&#x7C7B;&#xFF1A;</p>
-<p>Teacher.h</p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-#import &quot;assistantProtocol.h&quot;
-
-@interface Teacher : NSObject
-
-//&#x8BE5;&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x52A9;&#x6559;&#x5BF9;&#x8C61;&#xFF0C;&#x6B64;&#x5BF9;&#x8C61;&#x5FC5;&#x987B;&#x5B9E;&#x73B0; assistantProtocol &#x534F;&#x8BAE;&#x3002;
-@property (nonatomic, retain) id &lt;assistantProtocol&gt; delegate;
-
-- (void)teach;                  //&#x6559;&#x80B2;&#x5B66;&#x751F;
-- (void)checkHomeWork;         //&#x68C0;&#x67E5;&#x4F5C;&#x4E1A;
-- (void)assNotice;             //&#x59D4;&#x6258;&#x52A9;&#x6559;&#x901A;&#x77E5;&#x4FE1;&#x606F;
-- (void)assCollectHomeWork;    //&#x59D4;&#x6258;&#x52A9;&#x6559;&#x6536;&#x53D6;&#x4F5C;&#x4E1A;
-
-@end
-</code></pre><p>Teacher.m</p>
-<pre><code>#import &lt;Teacher.h&gt;
-
-@implementation Teacher
-
-- (void)teach{
-    NSLog(@&quot;Teach Students.&quot;);
-}
-
-- (void)checkHomeWork{
-    NSLog(@&quot;Check the HomeWork.&quot;);
-}
-
-- (void)notice{
-    [_delegate notice];
-}
-
-- (void)collectHomeWork{
-    [_delegate collectHomeWork];
-}
-
-@end
-</code></pre><p>&#x5B9E;&#x73B0; main.m</p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-#import &lt;Teacher.h&gt;
-#import &lt;Assistant.h&gt;
-
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        //&#x5B9E;&#x4F8B;&#x5316;&#x6559;&#x5E08;&#x548C;&#x52A9;&#x6559;&#x5BF9;&#x8C61;
-        Teacher *teacher = [[Teacher alloc] init];
-        Assistant *assistant = [[Assistant alloc] init];
-
-        //&#x8BBE;&#x7F6E;&#x6559;&#x5E08;&#x5BF9;&#x8C61;&#x7684;&#x4EE3;&#x7406;&#x4E3A;&#x52A9;&#x6559;
-        teacher.delegate = assistant;
-
-        [teacher teach];
-        [teacher checkHomeWork];
-
-        [teacher assNotice];
-        [teacher assCollectHomeWork];
-    }
-return 0;
-}
-</code></pre>
       
     </div>
     
@@ -340,6 +215,10 @@ return 0;
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/24/Objective-C-协议和委托/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
