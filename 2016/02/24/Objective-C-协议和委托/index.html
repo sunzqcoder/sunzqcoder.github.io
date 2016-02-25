@@ -6,19 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>Objective-C 协议和委托 | Madao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;
-&amp;#x534F;&amp;#x8BAE">
+  <meta name="description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x534F;&amp;#x8BAE;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C 协议和委托">
 <meta property="og:url" content="http://sunzqcoder.github.io/2016/02/24/Objective-C-协议和委托/index.html">
 <meta property="og:site_name" content="Madao's Blog">
-<meta property="og:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;
-&amp;#x534F;&amp;#x8BAE">
-<meta property="og:updated_time" content="2016-02-25T10:37:41.000Z">
+<meta property="og:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x534F;&amp;#x8BAE;">
+<meta property="og:updated_time" content="2016-02-25T10:43:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C 协议和委托">
-<meta name="twitter:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;
-&amp;#x534F;&amp;#x8BAE">
+<meta name="twitter:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x534F;&amp;#x8BAE;">
   
     <link rel="alternative" href="/atom.xml" title="Madao&#39;s Blog" type="application/atom+xml">
   
@@ -212,8 +209,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"><a href="#&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;" class="headerlink" title="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"></a>&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;</h5><p><br></p>
-<h2 id="&#x534F;&#x8BAE;-protocol"><a href="#&#x534F;&#x8BAE;-protocol" class="headerlink" title="&#x534F;&#x8BAE; (protocol)"></a>&#x534F;&#x8BAE; (protocol)</h2><p>1.&#x534F;&#x8BAE;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;</p>
+        <h5 id="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"><a href="#&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;" class="headerlink" title="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"></a>&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;</h5><h2 id="&#x534F;&#x8BAE;-protocol"><a href="#&#x534F;&#x8BAE;-protocol" class="headerlink" title="&#x534F;&#x8BAE; (protocol)"></a>&#x534F;&#x8BAE; (protocol)</h2><p>1.&#x534F;&#x8BAE;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;</p>
 <p>&#x534F;&#x8BAE;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x7ED3;&#x6784;&#xFF0C;&#x7528;&#x4E8E;&#x58F0;&#x660E;&#x4E13;&#x95E8;&#x88AB;&#x5176;&#x4ED6;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x534F;&#x8BAE;&#x5728;&#x4EE5;&#x4E0B;&#x573A;&#x5408;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF1A;</p>
 <p>&#xB7; &#x9700;&#x8981;&#x7531;&#x5176;&#x4ED6;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002;<br>&#xB7; &#x58F0;&#x660E;&#x672A;&#x77E5;&#x7C7B;&#x7684;&#x63A5;&#x53E3;&#x3002;<br>&#xB7; &#x4E24;&#x4E2A;&#x7C7B;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x3002;</p>
 <a id="more"></a>
@@ -291,7 +287,7 @@
 //&#x8BE5;&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x52A9;&#x6559;&#x5BF9;&#x8C61;&#xFF0C;&#x6B64;&#x5BF9;&#x8C61;&#x5FC5;&#x987B;&#x5B9E;&#x73B0; assistantProtocol &#x534F;&#x8BAE;&#x3002;
 @property (nonatomic, retain) id &lt;assistantProtocol&gt; delegate;
 
-- (void)teach;                  //&#x6559;&#x80B2;&#x5B66;&#x751F;
+- (void)teach;                 //&#x6559;&#x80B2;&#x5B66;&#x751F;
 - (void)checkHomeWork;         //&#x68C0;&#x67E5;&#x4F5C;&#x4E1A;
 - (void)assNotice;             //&#x59D4;&#x6258;&#x52A9;&#x6559;&#x901A;&#x77E5;&#x4FE1;&#x606F;
 - (void)assCollectHomeWork;    //&#x59D4;&#x6258;&#x52A9;&#x6559;&#x6536;&#x53D6;&#x4F5C;&#x4E1A;
