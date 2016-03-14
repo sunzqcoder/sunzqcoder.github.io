@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://sunzqcoder.github.io/2016/02/23/Objective-C 类和对象/index.html">
 <meta property="og:site_name" content="Madao's Blog">
 <meta property="og:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x7C7B;&amp;#x548C;">
-<meta property="og:updated_time" content="2016-02-25T10:45:21.000Z">
+<meta property="og:updated_time" content="2016-03-14T13:17:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C 类和对象">
 <meta name="twitter:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x7C7B;&amp;#x548C;">
@@ -263,7 +263,7 @@ Person *person = [[Person alloc] init];
     self = [super init];
     if(self != nil){
         self.name = name;
-        self,age = age;
+        self.age = age;
     }
 }
 </code></pre><p>self &#x6307;&#x4EE3;&#x5F53;&#x524D;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;super &#x4EE3;&#x8868;&#x7684;&#x662F;&#x7236;&#x7C7B;&#xFF0C;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x662F;&#x901A;&#x8FC7;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x7ED9;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x4E3A; nil &#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x4E3A; nil &#x5219;&#x7ED9; name &#x548C; age &#x5C5E;&#x6027;&#x8D4B;&#x503C;&#x3002;</p>
