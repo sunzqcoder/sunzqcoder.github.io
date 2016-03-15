@@ -173,6 +173,120 @@
 
       <div class="body-wrap">
   
+    <article id="post-Objective-C-NSString字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/10/Objective-C-NSString字符串/" class="article-date">
+  	<time datetime="2016-03-10T02:35:12.000Z" itemprop="datePublished">2016-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/10/Objective-C-NSString字符串/">Objective-C NSString字符串</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Objective-C-&#x5B57;&#x7B26;&#x4E32;"><a href="#Objective-C-&#x5B57;&#x7B26;&#x4E32;" class="headerlink" title="Objective-C &#x5B57;&#x7B26;&#x4E32;"></a>Objective-C &#x5B57;&#x7B26;&#x4E32;</h2><p>Objective-C &#x4E2D;&#x5904;&#x7406;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7684;&#x7C7B;&#x4E3B;&#x8981;&#x662F; NSString &#x548C; NSMutableString &#x4E24;&#x4E2A;&#x7C7B;&#xFF0C;NSString &#x7C7B;&#x4E00;&#x65E6;&#x521B;&#x5EFA;&#xFF0C;&#x5C31;&#x4E0D;&#x53EF;&#x4EE5;&#x518D;&#x4FEE;&#x6539;&#xFF0C;&#x82E5;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x53EF;&#x4FEE;&#x6539;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x521B;&#x5EFA; NSMutableString &#x5B9E;&#x4F8B;&#x3002;</p>
+<h3 id="&#x4E0D;&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x4E32;-NSString"><a href="#&#x4E0D;&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x4E32;-NSString" class="headerlink" title="&#x4E0D;&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x4E32;(NSString)"></a>&#x4E0D;&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x4E32;(NSString)</h3><p>1.&#x521B;&#x5EFA;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;</p>
+<pre><code>NSString *string = @&quot;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&quot;;
+</code></pre><p>2.&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>NSString *string = [[NSString alloc] init];
+</code></pre><p>3.&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>NSString *string = [[NSString alloc] initWithFormat:@&quot;%d&quot;,20];
+</code></pre><p>4.&#x5BF9;&#x6BD4;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x76F8;&#x540C;</p>
+<pre><code>if ([string1 isEqualToString:string2]) {
+    NSLog(@&quot;string1 isequal string2 &#x76F8;&#x540C;&quot;);
+}else{
+    NSLog(@&quot;string1 isequal string2 &#x4E0D;&#x76F8;&#x540C;&quot;);
+}
+</code></pre><p>5.&#x6BD4;&#x8F83;&#x5B57;&#x7B26;&#x4E32;&#x5927;&#x5C0F;</p>
+<pre><code>NSComparisonResult result = [string1 caseInsensitiveCompare:string2];
+</code></pre><p>6.&#x6C42;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;</p>
+<pre><code>NSUInteger length = [string1 length];
+</code></pre><p>7.&#x6539;&#x53D8;&#x5B57;&#x7B26;&#x4E32;&#x5927;&#x5C0F;&#x5199;</p>
+<pre><code>NSLog(@&quot;%@&quot;, [string4 uppercaseString]);     //&#x5168;&#x90E8;&#x5927;&#x5199;
+NSLog(@&quot;%@&quot;, [string4 lowercaseString]);     //&#x5168;&#x90E8;&#x5C0F;&#x5199;
+NSLog(@&quot;%@&quot;, [string4 capitalizedString]);   //&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;
+</code></pre><p>8.&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6362;&#x4E3A;&#x6570;&#x7EC4;</p>
+<pre><code>NSString *string = @&quot;one two three four five&quot;;
+NSArray *array = [string8 componentsSeparatedByString:@&quot; &quot;];
+</code></pre><p>9.&#x622A;&#x53D6;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>//&#x4ECE;&#x5F00;&#x5934;&#x622A;&#x53D6;&#x5230;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#xFF0C;&#x4F46;&#x4E0D;&#x5305;&#x62EC;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;
+NSString *str1 = [string substringToIndex:1];
+
+//&#x4ECE;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#x5230;&#x7ED3;&#x675F;&#xFF0C;&#x5305;&#x62EC;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;
+NSString *str2 = [string substringFromIndex:2];
+</code></pre><p>10.&#x6839;&#x636E;&#x8303;&#x56F4;&#x622A;&#x53D6;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>//&#x4ECE;&#x7B2C; 4 &#x4E2A;&#x5B57;&#x7B26;&#x5F00;&#x59CB;&#x622A;&#x53D6;&#xFF0C;&#x957F;&#x5EA6;&#x4E3A; 2 &#x4E2A;&#x5B57;&#x7B26;
+NSString *str = [string substringWithRange:NSMakeRange(4, 2)];
+</code></pre><p>11.&#x8FDE;&#x63A5;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>NSString *str = [string1 stringByAppendingString:string2];
+NSString *str = [string1 stringByAppendingFormat:@&quot;%@&quot;, string2];
+</code></pre><p>12.&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;</p>
+<pre><code>NSRange range = [str rangeOfString:@&quot;abc&quot;];
+if (range.location != NSNotFound) {
+    NSLog(@&quot;&#x627E;&#x5230;&#x4E86;&quot;);
+} else {
+    NSLog(@&quot;&#x6CA1;&#x627E;&#x5230;&quot;);
+}
+</code></pre><h3 id="&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x4E32;-NSMutableString"><a href="#&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x4E32;-NSMutableString" class="headerlink" title="&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x4E32;(NSMutableString)"></a>&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x4E32;(NSMutableString)</h3><p>1.&#x521D;&#x59CB;&#x5316;</p>
+<pre><code>NSMutableString *str1 = [[NSMutableString alloc] initWithFormat:@&quot;abc&quot;];
+NSMutableString *str2 = [NSMutableString stringWithFormat:@&quot;def&quot;];
+NSMutableString *str3 = [NSMutableString stringWithString:@&quot;abcdef&quot;];
+</code></pre><p>2.&#x63D2;&#x5165;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>//&#x4ECE;&#x5B57;&#x7B26;&#x4E32;&#x7B2C; 3 &#x4E2A;&#x5B57;&#x7B26;&#x5F00;&#x59CB;&#x63D2;&#x5165;
+[str1 insertString:@&quot;def&quot; atIndex:3];
+</code></pre><p>3.&#x5220;&#x9664;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>//&#x4ECE;&#x5B57;&#x7B26;&#x4E32;&#x7B2C; 0 &#x4E2A;&#x5B57;&#x7B26;&#x5F00;&#x59CB;&#x5220;&#x9664;&#xFF0C;&#x5220;&#x9664;&#x957F;&#x5EA6;&#x4E3A; 3
+[str1 deleteCharactersInRange:NSMakeRange(0, 3)];
+</code></pre><p>4.&#x66FF;&#x6362;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>//&#x4ECE;&#x5B57;&#x7B26;&#x4E32;&#x7B2C; 0 &#x4E2A;&#x5B57;&#x7B26;&#x5F00;&#x59CB;&#x66FF;&#x6362;&#xFF0C;&#x66FF;&#x6362;&#x957F;&#x5EA6;&#x4E3A; 3 
+[str1 replaceCharactersInRange:NSMakeRange(0, 3) withString:@&quot;abc&quot;];
+</code></pre><p>5.&#x8FDE;&#x63A5;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>[str1 appendString:str2];
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Objective-C-代码块" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
