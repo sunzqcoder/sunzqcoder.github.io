@@ -176,8 +176,8 @@
     <article id="post-Objective-C-数组" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/15/Objective-C-数组/" class="article-date">
-  	<time datetime="2016-03-15T03:30:47.000Z" itemprop="datePublished">2016-03-15</time>
+      <a href="/2016/03/11/Objective-C-数组/" class="article-date">
+  	<time datetime="2016-03-11T03:30:47.000Z" itemprop="datePublished">2016-03-11</time>
 </a>
     </div>
   
@@ -190,7 +190,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/15/Objective-C-数组/">Objective-C 数组</a>
+      <a class="article-title" href="/2016/03/11/Objective-C-数组/">Objective-C 数组</a>
     </h1>
   
 
@@ -199,8 +199,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="&#x6570;&#x7EC4;"><a href="#&#x6570;&#x7EC4;" class="headerlink" title="&#x6570;&#x7EC4;"></a>&#x6570;&#x7EC4;</h2><p>Foundation&#x4E2D;&#x7684;&#x6570;&#x7EC4;&#xFF08;NSArray&#xFF0C;NSMutableArray&#xFF09;&#x662F;&#x4E00;&#x7EC4;&#x6709;&#x5E8F;&#x7684;&#x5BF9;&#x8C61;&#x96C6;&#x5408;&#xFF0C;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x4E0B;&#x6807;&#x83B7;&#x53D6;&#x5230;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x3002;<br>&#x6570;&#x7EC4;&#x4E2D;&#x4E0D;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x53EA;&#x80FD;&#x5B58;&#x653E;&#x5B9E;&#x4F8B;&#xFF08;&#x5BF9;&#x8C61;&#xFF09;&#x3002;</p>
+        <h2 id="&#x6570;&#x7EC4;-NSArray"><a href="#&#x6570;&#x7EC4;-NSArray" class="headerlink" title="&#x6570;&#x7EC4;(NSArray)"></a>&#x6570;&#x7EC4;(NSArray)</h2><p>Foundation&#x4E2D;&#x7684;&#x6570;&#x7EC4;&#x662F;&#x4E00;&#x7EC4;&#x6709;&#x5E8F;&#x7684;&#x5BF9;&#x8C61;&#x96C6;&#x5408;&#xFF0C;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x4E0B;&#x6807;&#x83B7;&#x53D6;&#x5230;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x3002;&#x6570;&#x7EC4;&#x4E2D;&#x4E0D;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x53EA;&#x80FD;&#x5B58;&#x653E;&#x5B9E;&#x4F8B;&#xFF08;&#x5BF9;&#x8C61;&#xFF09;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x6570;&#x7EC4;&#x4E5F;&#x5206;&#x4E3A;&#x53EF;&#x53D8; (NSArray) &#x548C;&#x4E0D;&#x53EF;&#x53D8; (NSMutbleArray) &#x4E24;&#x79CD;&#x3002;</p>
+<h3 id="&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x7EC4;-NSArray"><a href="#&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x7EC4;-NSArray" class="headerlink" title="&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x7EC4;(NSArray)"></a>&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x7EC4;(NSArray)</h3><p>1.&#x521D;&#x59CB;&#x5316;</p>
+<pre><code>//&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x6570;&#x7EC4;&#x3002;
+NSArray *array = [NSArray array];
 
+//&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x6570;&#x7EC4;&#x3002;
+NSArray *array1 = [NSArray arrayWithObject:@&quot;one&quot;];
+
+//&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x6570;&#x7EC4;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x4EE5; nil &#x4F5C;&#x4E3A;&#x6570;&#x7EC4;&#x7ED3;&#x675F;&#x3002;
+NSArray *array2 = [NSArray arrayWithObjects:@&quot;one&quot;,@&quot;two&quot;,nil];
+</code></pre>
       
     </div>
     
@@ -213,6 +222,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/11/Objective-C-数组/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
