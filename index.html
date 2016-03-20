@@ -173,6 +173,76 @@
 
       <div class="body-wrap">
   
+    <article id="post-Objective-C-KVC-和-KVO" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/17/Objective-C-KVC-和-KVO/" class="article-date">
+  	<time datetime="2016-03-17T06:58:16.000Z" itemprop="datePublished">2016-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/17/Objective-C-KVC-和-KVO/">Objective-C KVC 和 KVO</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Objective-C-KVC-&#x548C;-KVO"><a href="#Objective-C-KVC-&#x548C;-KVO" class="headerlink" title="Objective-C KVC &#x548C; KVO"></a>Objective-C KVC &#x548C; KVO</h2><h3 id="KVC&#xFF08;NSKeyValueCoding&#xFF09;"><a href="#KVC&#xFF08;NSKeyValueCoding&#xFF09;" class="headerlink" title="KVC&#xFF08;NSKeyValueCoding&#xFF09;"></a>KVC&#xFF08;NSKeyValueCoding&#xFF09;</h3><p>KVC&#xFF0C;&#x5373; NSKeyValueCoding&#xFF0C;&#x4E00;&#x4E2A;&#x975E;&#x6B63;&#x5F0F;&#x7684; protocol&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x673A;&#x5236;&#x6765;&#x95F4;&#x63A5;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528; setter &#x548C; getter &#x65B9;&#x6CD5;&#x8BBF;&#x95EE;&#x3002;</p>
+<p>1.KVC&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x79CD;&#x6309;&#x540D;&#x79F0;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x673A;&#x5236;</p>
+<p>&#x83B7;&#x53D6;&#x503C;</p>
+<pre><code>valueForKey:            //&#x4F20;&#x5165; NSString &#x5C5E;&#x6027;&#x7684;&#x540D;&#x5B57;&#x3002;
+valueForKeyPath:         //&#x4F20;&#x5165; NSString &#x5C5E;&#x6027;&#x7684;&#x8DEF;&#x5F84;&#x3002;
+valueForUndefinedKey:    //&#x9ED8;&#x8BA4;&#x4E3A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x53EF;&#x91CD;&#x5199;&#x6B64;&#x51FD;&#x6570;&#x505A;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x3002;
+</code></pre><p>&#x4FEE;&#x6539;&#x503C;</p>
+<pre><code>setValue:forKey:
+setValue:forKeyPath:
+setValue:forUndefinedKey:
+setNilValueForKey:        //&#x5F53;&#x5BF9;&#x975E;&#x7C7B;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E; nil &#x65F6;&#xFF0C;&#x8C03;&#x7528;&#xFF0C;&#x9ED8;&#x8BA4;&#x629B;&#x51FA;&#x5F02;&#x5E38;
+</code></pre><p>&#x4E00;&#x5BF9;&#x591A;&#x5173;&#x7CFB;&#x6210;&#x5458;&#x7684;&#x60C5;&#x51B5;</p>
+<pre><code>mutableArrayValueForKey:
+mutableSetValueForKey:
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Objective-C-字典" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -726,75 +796,6 @@ NSArray *array2 = [NSArray arrayWithObjects:@&quot;one&quot;,@&quot;two&quot;,ni
       
         <p class="article-more-link">
           <a  href="/2016/02/23/Hexo-搭建博客/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Objective-C-基础概念" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/22/Objective-C-基础概念/" class="article-date">
-  	<time datetime="2016-02-22T14:29:07.000Z" itemprop="datePublished">2016-02-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/22/Objective-C-基础概念/">Objective-C 基础概念</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"><a href="#&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;" class="headerlink" title="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"></a>&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;</h5><h3 id="1-1-Objective-C"><a href="#1-1-Objective-C" class="headerlink" title="1.1 Objective-C"></a>1.1 Objective-C</h3><p>Objective-C&#x662F;&#x5728;C&#x8BED;&#x8A00;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x52A0;&#x5165;&#x4E86;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5B83;&#x5B8C;&#x5168;&#x517C;&#x5BB9;C&#x8BED;&#x8A00;&#xFF0C;&#x662F;OS X &#x548C; iOS &#x7684;&#x4E3B;&#x8981;&#x5F00;&#x53D1;&#x8BED;&#x8A00;&#x3002;</p>
-<h3 id="1-2-Hello-World"><a href="#1-2-Hello-World" class="headerlink" title="1.2 Hello World"></a>1.2 Hello World</h3><pre><code>#import &lt;foundation/Foundation.h&gt;
-int main (int argc, const char *argv[]){
-    @autoreleasepool{
-        // insert code here...
-        NSLog(@&quot;Hello, World!&quot;);
-    }
-    return 0;
-}
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/02/22/Objective-C-基础概念/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

@@ -4,21 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>从头开始 | Madao&#39;s Blog</title>
+  <title>Objective-C KVC 和 KVO | Madao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Madao&amp;#x8BF4;&amp;#xFF1A;&amp;#x4EBA;&amp;#x751F;&amp;#x82E5;&amp;#x662F;&amp;#x8DCC;&amp;#x5230;&amp;#x4F4E;&amp;#x8C37;&amp;#xFF0C;&amp;#x5269;&amp;#x4E0B;&amp;#x7684;&amp;#x5C31;&amp;#x53EA;&amp;#x6709;&amp;#x5411;&amp;#x4E0A;&amp;#x722C;&amp;#x4E86;&amp;#x3002;
-&amp;#x4E0D;&amp;#x518D;&amp;#">
+  <meta name="description" content="Objective-C KVC &amp;#x548C; KVOKVC&amp;#xFF08;NSKeyValueCoding&amp;#xFF09;KVC&amp;#xFF0C;&amp;#x5373; NSKeyValueCoding&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x975E;&amp;#x6B63;&amp;#x5F0F;&amp;#x7684; protocol&amp;#xFF0C;&amp;#x63D0;&amp;#x4F9B;&amp;#x4E86;&amp;#x4">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从头开始">
-<meta property="og:url" content="http://sunzqcoder.github.io/2016/02/22/从头开始/index.html">
+<meta property="og:title" content="Objective-C KVC 和 KVO">
+<meta property="og:url" content="http://sunzqcoder.github.io/2016/03/17/Objective-C-KVC-和-KVO/index.html">
 <meta property="og:site_name" content="Madao's Blog">
-<meta property="og:description" content="Madao&amp;#x8BF4;&amp;#xFF1A;&amp;#x4EBA;&amp;#x751F;&amp;#x82E5;&amp;#x662F;&amp;#x8DCC;&amp;#x5230;&amp;#x4F4E;&amp;#x8C37;&amp;#xFF0C;&amp;#x5269;&amp;#x4E0B;&amp;#x7684;&amp;#x5C31;&amp;#x53EA;&amp;#x6709;&amp;#x5411;&amp;#x4E0A;&amp;#x722C;&amp;#x4E86;&amp;#x3002;
-&amp;#x4E0D;&amp;#x518D;&amp;#">
-<meta property="og:updated_time" content="2016-03-20T11:47:37.000Z">
+<meta property="og:description" content="Objective-C KVC &amp;#x548C; KVOKVC&amp;#xFF08;NSKeyValueCoding&amp;#xFF09;KVC&amp;#xFF0C;&amp;#x5373; NSKeyValueCoding&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x975E;&amp;#x6B63;&amp;#x5F0F;&amp;#x7684; protocol&amp;#xFF0C;&amp;#x63D0;&amp;#x4F9B;&amp;#x4E86;&amp;#x4">
+<meta property="og:updated_time" content="2016-03-20T06:28:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从头开始">
-<meta name="twitter:description" content="Madao&amp;#x8BF4;&amp;#xFF1A;&amp;#x4EBA;&amp;#x751F;&amp;#x82E5;&amp;#x662F;&amp;#x8DCC;&amp;#x5230;&amp;#x4F4E;&amp;#x8C37;&amp;#xFF0C;&amp;#x5269;&amp;#x4E0B;&amp;#x7684;&amp;#x5C31;&amp;#x53EA;&amp;#x6709;&amp;#x5411;&amp;#x4E0A;&amp;#x722C;&amp;#x4E86;&amp;#x3002;
-&amp;#x4E0D;&amp;#x518D;&amp;#">
+<meta name="twitter:title" content="Objective-C KVC 和 KVO">
+<meta name="twitter:description" content="Objective-C KVC &amp;#x548C; KVOKVC&amp;#xFF08;NSKeyValueCoding&amp;#xFF09;KVC&amp;#xFF0C;&amp;#x5373; NSKeyValueCoding&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x975E;&amp;#x6B63;&amp;#x5F0F;&amp;#x7684; protocol&amp;#xFF0C;&amp;#x63D0;&amp;#x4F9B;&amp;#x4E86;&amp;#x4">
   
     <link rel="alternative" href="/atom.xml" title="Madao&#39;s Blog" type="application/atom+xml">
   
@@ -175,11 +172,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-从头开始" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Objective-C-KVC-和-KVO" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/22/从头开始/" class="article-date">
-  	<time datetime="2016-02-22T13:01:48.000Z" itemprop="datePublished">2016-02-22</time>
+      <a href="/2016/03/17/Objective-C-KVC-和-KVO/" class="article-date">
+  	<time datetime="2016-03-17T06:58:16.000Z" itemprop="datePublished">2016-03-17</time>
 </a>
     </div>
   
@@ -192,7 +189,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      从头开始
+      Objective-C KVC 和 KVO
     </h1>
   
 
@@ -201,7 +198,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
 	</div>
 
         
@@ -212,9 +209,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Madao&#x8BF4;&#xFF1A;&#x4EBA;&#x751F;&#x82E5;&#x662F;&#x8DCC;&#x5230;&#x4F4E;&#x8C37;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x5C31;&#x53EA;&#x6709;&#x5411;&#x4E0A;&#x722C;&#x4E86;&#x3002;</p>
-<p>&#x4E0D;&#x518D;&#x6028;&#x5929;&#x5C24;&#x4EBA;&#xFF0C;&#x65B0;&#x7684;&#x4E00;&#x5E74;&#x8981;&#x50CF; Madao &#x4E00;&#x6837;&#xFF0C;&#x633A;&#x76F4;&#x8170;&#x6746;&#xFF0C;&#x5F80;&#x524D;&#x8D70;&#xFF01;</p>
-
+        <h2 id="Objective-C-KVC-&#x548C;-KVO"><a href="#Objective-C-KVC-&#x548C;-KVO" class="headerlink" title="Objective-C KVC &#x548C; KVO"></a>Objective-C KVC &#x548C; KVO</h2><h3 id="KVC&#xFF08;NSKeyValueCoding&#xFF09;"><a href="#KVC&#xFF08;NSKeyValueCoding&#xFF09;" class="headerlink" title="KVC&#xFF08;NSKeyValueCoding&#xFF09;"></a>KVC&#xFF08;NSKeyValueCoding&#xFF09;</h3><p>KVC&#xFF0C;&#x5373; NSKeyValueCoding&#xFF0C;&#x4E00;&#x4E2A;&#x975E;&#x6B63;&#x5F0F;&#x7684; protocol&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x673A;&#x5236;&#x6765;&#x95F4;&#x63A5;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528; setter &#x548C; getter &#x65B9;&#x6CD5;&#x8BBF;&#x95EE;&#x3002;</p>
+<p>1.KVC&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x79CD;&#x6309;&#x540D;&#x79F0;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x673A;&#x5236;</p>
+<p>&#x83B7;&#x53D6;&#x503C;</p>
+<pre><code>valueForKey:            //&#x4F20;&#x5165; NSString &#x5C5E;&#x6027;&#x7684;&#x540D;&#x5B57;&#x3002;
+valueForKeyPath:         //&#x4F20;&#x5165; NSString &#x5C5E;&#x6027;&#x7684;&#x8DEF;&#x5F84;&#x3002;
+valueForUndefinedKey:    //&#x9ED8;&#x8BA4;&#x4E3A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x53EF;&#x91CD;&#x5199;&#x6B64;&#x51FD;&#x6570;&#x505A;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x3002;
+</code></pre><p>&#x4FEE;&#x6539;&#x503C;</p>
+<pre><code>setValue:forKey:
+setValue:forKeyPath:
+setValue:forUndefinedKey:
+setNilValueForKey:        //&#x5F53;&#x5BF9;&#x975E;&#x7C7B;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E; nil &#x65F6;&#xFF0C;&#x8C03;&#x7528;&#xFF0C;&#x9ED8;&#x8BA4;&#x629B;&#x51FA;&#x5F02;&#x5E38;
+</code></pre><p>&#x4E00;&#x5BF9;&#x591A;&#x5173;&#x7CFB;&#x6210;&#x5458;&#x7684;&#x60C5;&#x51B5;</p>
+<pre><code>mutableArrayValueForKey:
+mutableSetValueForKey:
+</code></pre>
       
     </div>
     
@@ -223,15 +232,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/02/22/Objective-C-基础概念/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Objective-C 基础概念
-        
-      </div>
-    </a>
   
+    <a href="/2016/03/13/Objective-C-字典/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Objective-C 字典</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -264,7 +269,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="从头开始" data-title="从头开始" data-url="http://sunzqcoder.github.io/2016/02/22/从头开始/"></div>
+	<div class="ds-thread" data-thread-key="Objective-C-KVC-和-KVO" data-title="Objective-C KVC 和 KVO" data-url="http://sunzqcoder.github.io/2016/03/17/Objective-C-KVC-和-KVO/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
