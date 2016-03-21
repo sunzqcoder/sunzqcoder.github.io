@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://sunzqcoder.github.io/2016/03/21/Objective-C-线程同步/index.html">
 <meta property="og:site_name" content="Madao's Blog">
 <meta property="og:description" content="&amp;#x7EBF;&amp;#x7A0B;&amp;#x540C;&amp;#x6B65;&amp;#x7EBF;&amp;#x7A0B;&amp;#x540C;&amp;#x6B65;&amp;#x662F;&amp;#x4E3A;&amp;#x4E86;&amp;#x9632;&amp;#x6B62;&amp;#x591A;&amp;#x4E2A;&amp;#x7EBF;&amp;#x7A0B;&amp;#x8BBF;&amp;#x95EE;&amp;#x540C;&amp;#x4E00;&amp;#x8D44;&amp;#x6E90;&amp;#x9020;&amp;#x6210;">
-<meta property="og:updated_time" content="2016-03-21T10:04:21.000Z">
+<meta property="og:updated_time" content="2016-03-21T10:26:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C 线程同步">
 <meta name="twitter:description" content="&amp;#x7EBF;&amp;#x7A0B;&amp;#x540C;&amp;#x6B65;&amp;#x7EBF;&amp;#x7A0B;&amp;#x540C;&amp;#x6B65;&amp;#x662F;&amp;#x4E3A;&amp;#x4E86;&amp;#x9632;&amp;#x6B62;&amp;#x591A;&amp;#x4E2A;&amp;#x7EBF;&amp;#x7A0B;&amp;#x8BBF;&amp;#x95EE;&amp;#x540C;&amp;#x4E00;&amp;#x8D44;&amp;#x6E90;&amp;#x9020;&amp;#x6210;">
@@ -218,7 +218,26 @@
     //self &#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;
 }
 </code></pre><p>@synchronized&#xFF0C;&#x4EE3;&#x8868;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x52A0;&#x9501;&#xFF0C;&#x4E0D;&#x7BA1;&#x54EA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FD0;&#x884C;&#x5230;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x90FD;&#x8981;&#x68C0;&#x67E5;&#x6709;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x6709;&#xFF0C;&#x8981;&#x7B49;&#x5F85;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x7EBF;&#x7A0B;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x8FD0;&#x884C;&#xFF0C;&#x82E5;&#x65E0;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x3002;</p>
-<h5 id="2-NSLock"><a href="#2-NSLock" class="headerlink" title="2.NSLock"></a>2.NSLock</h5><p>NSLock &#x7684;&#x6267;&#x884C;&#x539F;&#x7406;&#x662F;&#xFF0C;&#x5F53;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x5230;&#x52A0;&#x9501;&#x7684;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5148; lock &#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x8BE5;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x52A0;&#x9501;&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD0;&#x884C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x8C03;&#x7528; unlock &#x65B9;&#x6CD5;&#xFF0C;&#x8FDB;&#x884C;&#x89E3;&#x9501;&#x3002;</p>
+<p>&#x4F8B;&#xFF1A;</p>
+<pre><code>//&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;
+TestObj *obj = [[TestObj alloc] init];
+
+//&#x7EBF;&#x7A0B;1
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    @synchronized(obj){
+        [obj method1];
+        sleep(10);
+    }
+});
+
+//&#x7EBF;&#x7A0B;2
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    sleep(1);
+    @synchronized(obj){
+        [obj method2];
+    }
+});
+</code></pre><h5 id="2-NSLock"><a href="#2-NSLock" class="headerlink" title="2.NSLock"></a>2.NSLock</h5><p>NSLock &#x7684;&#x6267;&#x884C;&#x539F;&#x7406;&#x662F;&#xFF0C;&#x5F53;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x5230;&#x52A0;&#x9501;&#x7684;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5148; lock &#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x8BE5;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x52A0;&#x9501;&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD0;&#x884C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x8C03;&#x7528; unlock &#x65B9;&#x6CD5;&#xFF0C;&#x8FDB;&#x884C;&#x89E3;&#x9501;&#x3002;</p>
 <pre><code>NSLock *syncLock = [[NSLock alloc]init];
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
 
@@ -281,9 +300,83 @@ fail to lock before date
 value = 3
 value = 2
 value = 1
-</code></pre><h5 id="4-NSConditionLock"><a href="#4-NSConditionLock" class="headerlink" title="4.NSConditionLock"></a>4.NSConditionLock</h5><p>&#x672C;&#x6587;&#x53C2;&#x8003;&#xFF1A;</p>
+</code></pre><h5 id="4-NSConditionLock"><a href="#4-NSConditionLock" class="headerlink" title="4.NSConditionLock"></a>4.NSConditionLock</h5><p>NSConditionLock &#x662F;&#x6761;&#x4EF6;&#x9501;&#xFF0C;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x8FD9;&#x4E2A;&#x9501;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x5B9A;&#x6761;&#x4EF6;&#x8FDB;&#x884C;&#x52A0;&#x9501;&#x548C;&#x89E3;&#x9501;&#x3002;</p>
+<pre><code>[lock lockWhenCondition:A&#x6761;&#x4EF6;];
+</code></pre><p>&#x8868;&#x793A;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x83B7;&#x5F97;&#x8BE5;&#x9501;&#xFF0C;&#x4F46;&#x662F;&#x8BE5;&#x9501;&#x5185;&#x90E8;&#x7684;condition&#x4E0D;&#x7B49;&#x4E8E;A&#x6761;&#x4EF6;&#xFF0C;&#x5B83;&#x4F9D;&#x7136;&#x4E0D;&#x80FD;&#x83B7;&#x5F97;&#x9501;&#xFF0C;&#x4ECD;&#x7136;&#x7B49;&#x5F85;&#x3002;&#x5982;&#x679C;&#x5185;&#x90E8;&#x7684;condition&#x7B49;&#x4E8E;A&#x6761;&#x4EF6;&#xFF0C;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x83B7;&#x5F97;&#x8BE5;&#x9501;&#xFF0C;&#x5219;&#x8FDB;&#x5165;&#x4EE3;&#x7801;&#x533A;&#xFF0C;&#x540C;&#x65F6;&#x8BBE;&#x7F6E;&#x5B83;&#x83B7;&#x5F97;&#x8BE5;&#x9501;&#xFF0C;&#x5176;&#x4ED6;&#x4EFB;&#x4F55;&#x7EBF;&#x7A0B;&#x90FD;&#x5C06;&#x7B49;&#x5F85;&#x5B83;&#x4EE3;&#x7801;&#x7684;&#x5B8C;&#x6210;&#xFF0C;&#x76F4;&#x81F3;&#x5B83;&#x89E3;&#x9501;&#x3002;</p>
+<pre><code>[xxx unlockWithCondition:A&#x6761;&#x4EF6;];
+</code></pre><p>&#x8868;&#x793A;&#x91CA;&#x653E;&#x9501;&#xFF0C;&#x540C;&#x65F6;&#x628A;&#x5185;&#x90E8;&#x7684;condition&#x8BBE;&#x7F6E;&#x4E3A;A&#x6761;&#x4EF6;&#x3002;</p>
+<p>&#x4F8B;1&#xFF1A;</p>
+<pre><code>//&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;
+NSConditionLock *theLock = [[NSConditionLock alloc] init];
+
+//&#x7EBF;&#x7A0B;1
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    for (int i=0;i&lt;=2;i++)
+    {
+        [theLock lock];
+        NSLog(@&quot;thread1:%d&quot;,i);
+        sleep(2);
+        [theLock unlockWithCondition:i];
+    }
+});
+
+//&#x7EBF;&#x7A0B;2
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    [theLock lockWhenCondition:2];
+    NSLog(@&quot;thread2&quot;);
+    [theLock unlock];
+});
+</code></pre><p>&#x7EBF;&#x7A0B;1&#x4E2D;&#xFF0C;&#x52A0;&#x9501;&#x4F7F;&#x7528;&#x4E86; lock&#xFF0C;&#x65E0;&#x9700;&#x6761;&#x4EF6;&#xFF0C;&#x4F46;&#x5728;&#x89E3;&#x9501;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x6574;&#x5F62;&#x6761;&#x4EF6;&#xFF0C;&#x800C;&#x7EBF;&#x7A0B;2&#x5219;&#x9700;&#x8981;&#x4E00;&#x628A;&#x6807;&#x8BC6;&#x4E3A;2&#x7684;&#x94A5;&#x5319;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x5F53;&#x7EBF;&#x7A0B;1&#x5FAA;&#x73AF;&#x5230;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x624D;&#x6253;&#x5F00;&#x7EBF;&#x7A0B;2&#x4E2D;&#x7684;&#x9501;&#x3002;</p>
+<p>&#x4F8B;2&#xFF1A;</p>
+<pre><code>id condLock = [[NSConditionLock alloc] initWithCondition:NO_DATA];
+
+// producer
+while(true)
+{
+    [condLock lock];
+    /* Add data to the queue. */
+    [condLock unlockWithCondition:HAS_DATA];
+}
+
+// consumer
+while (true)
+{
+    [condLock lockWhenCondition:HAS_DATA];
+    /* Remove data from the queue. */
+    [condLock unlockWithCondition:(isEmpty ? NO_DATA : HAS_DATA)];
+
+    // Process the data locally.
+}
+</code></pre><p>&#x6761;&#x4EF6;&#x9501;&#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x662F;NO_DATA&#xFF0C;&#x6240;&#x4EE5;&#x751F;&#x4EA7;&#x8005;&#x7EBF;&#x7A0B;&#x5728;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x83B7;&#x53D6;&#x5230;&#x9501;&#xFF0C;&#x751F;&#x4EA7;&#x5B8C;&#x6210;&#x540E;&#x518D;&#x628A;&#x72B6;&#x6001;&#x8BBE;&#x7F6E;&#x4E3A;HAS_DATA&#xFF1B;&#x8FD9;&#x65F6;&#x6D88;&#x8D39;&#x8005;&#x7EBF;&#x7A0B;&#x53D1;&#x73B0;&#x6761;&#x4EF6;&#x53D8;&#x6210;HAS_DATA&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x9501;&#xFF0C;&#x76F4;&#x5230;&#x6D88;&#x8D39;&#x7ED3;&#x675F;&#x540E;&#x518D;&#x628A;&#x72B6;&#x6001;&#x8BBE;&#x7F6E;&#x6210;NO_DATA&#x3002;</p>
+<h5 id="5-NSDistributedLock"><a href="#5-NSDistributedLock" class="headerlink" title="5.NSDistributedLock"></a>5.NSDistributedLock</h5><p>NSDistributedLock &#x662F;&#x8DE8;&#x8FDB;&#x7A0B;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x9501;&#xFF0C;&#x5E95;&#x5C42;&#x662F;&#x7528;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;&#x7684;&#x4E92;&#x65A5;&#x9501;&#x3002;NSDistributedLock&#x6CA1;&#x6709;&#x5B9E;&#x73B0;NSLocking&#x534F;&#x8BAE;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6709;&#x4F1A;&#x963B;&#x585E;&#x7EBF;&#x7A0B;&#x7684;lock&#x65B9;&#x6CD5;&#xFF0C;&#x53D6;&#x800C;&#x4EE3;&#x4E4B;&#x7684;&#x662F;&#x975E;&#x963B;&#x585E;&#x7684;tryLock&#x65B9;&#x6CD5;&#x3002;NSDistributedLock&#x53EA;&#x6709;&#x5728;&#x9501;&#x6301;&#x6709;&#x8005;&#x663E;&#x5F0F;&#x5730;&#x91CA;&#x653E;&#x540E;&#x624D;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5F53;&#x6301;&#x6709;&#x9501;&#x7684;&#x5E94;&#x7528;&#x5D29;&#x6E83;&#x540E;&#xFF0C;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x5C31;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;&#x53D7;&#x4FDD;&#x62A4;&#x7684;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x4E86;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>//&#x7A0B;&#x5E8F;A
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    lock = [[NSDistributedLock alloc] initWithPath:@&quot;/Users/mac/Desktop/earning__&quot;];
+    [lock breakLock];
+    [lock tryLock];
+    sleep(10);
+    [lock unlock];
+    NSLog(@&quot;appA: OK&quot;);
+});
+
+//&#x7A0B;&#x5E8F;B
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    lock = [[NSDistributedLock alloc] initWithPath:@&quot;/Users/mac/Desktop/earning__&quot;];
+
+    while (![lock tryLock]) {
+        NSLog(@&quot;appB: waiting&quot;);
+        sleep(1);
+    }
+    [lock unlock];
+    NSLog(@&quot;appB: OK&quot;);
+});
+</code></pre><p>&#x5148;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;A,&#x7136;&#x540E;&#x7ACB;&#x5373;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;B,&#x6839;&#x636E;&#x6253;&#x5370;&#x4F60;&#x53EF;&#x4EE5;&#x6E05;&#x695A;&#x7684;&#x53D1;&#x73B0;&#xFF0C;&#x5F53;&#x7A0B;&#x5E8F;A&#x521A;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7A0B;&#x5E8F;B&#x4E00;&#x76F4;&#x5904;&#x4E8E;&#x7B49;&#x5F85;&#x4E2D;&#xFF0C;&#x5F53;&#x5927;&#x6982;10&#x79D2;&#x8FC7;&#x540E;&#xFF0C;&#x7A0B;&#x5E8F;B&#x4FBF;&#x6253;&#x5370;&#x51FA;&#x4E86;appB:OK&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x4EE5;&#x4E0A;&#x4FBF;&#x5B9E;&#x73B0;&#x4E86;&#x4E24;&#x4E0A;&#x4E0D;&#x540C;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x7684;&#x4E92;&#x65A5;&#x3002;/Users/mac/Desktop/earning__&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x6216;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x6587;&#x4EF6;&#x6216;&#x6587;&#x4EF6;&#x5939;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x90A3;&#x4E48;&#x5728;tryLock&#x8FD4;&#x56DE;YES&#x65F6;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x8BE5;&#x6587;&#x4EF6;/&#x6587;&#x4EF6;&#x5939;&#x3002;&#x5728;&#x7ED3;&#x675F;&#x7684;&#x65F6;&#x5019;&#x8BE5;&#x6587;&#x4EF6;/&#x6587;&#x4EF6;&#x5939;&#x4F1A;&#x88AB;&#x6E05;&#x9664;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x9009;&#x62E9;&#x7684;&#x8BE5;&#x8DEF;&#x5F84;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5E94;&#x8BE5;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4EE5;&#x9632;&#x6B62;&#x8BEF;&#x5220;&#x4E86;&#x6587;&#x4EF6;&#x3002;</p>
+<hr>
+<p>&#x672C;&#x6587;&#x53C2;&#x8003;&#xFF1A;</p>
 <p>1.<a href="http://www.cocoachina.com/ios/20150513/11808.html" target="_blank" rel="external">http://www.cocoachina.com/ios/20150513/11808.html</a></p>
 <p>2.<a href="http://blog.csdn.net/likendsl/article/details/8568961" target="_blank" rel="external">http://blog.csdn.net/likendsl/article/details/8568961</a></p>
+<p>3.<a href="http://www.tanhao.me/pieces/643.html/" target="_blank" rel="external">http://www.tanhao.me/pieces/643.html/</a></p>
 
       
     </div>
