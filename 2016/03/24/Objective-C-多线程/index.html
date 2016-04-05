@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Objective-C 多线程 | Madao&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x591A;&amp;#x7EBF;&amp;#x7A0B;1.&amp;#x57FA;&amp;#x672C;&amp;#x6982;&amp;#x5FF5;
+&amp;#x7EBF;&amp;#x7A0B;&amp;#xFF1A;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6267;&amp;#x884C;&amp;#x6D41;&amp;#x7684;&amp;#x6700;&amp;#x5C0F;&amp;#x5355;&amp;#x5143;&amp;#xFF0C;&amp;#x7EBF;&amp;#x7A0B;&amp;#x662F;&amp;#x8F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C 多线程">
+<meta property="og:url" content="http://sunzqcoder.github.io/2016/03/24/Objective-C-多线程/index.html">
+<meta property="og:site_name" content="Madao's Blog">
+<meta property="og:description" content="&amp;#x591A;&amp;#x7EBF;&amp;#x7A0B;1.&amp;#x57FA;&amp;#x672C;&amp;#x6982;&amp;#x5FF5;
+&amp;#x7EBF;&amp;#x7A0B;&amp;#xFF1A;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6267;&amp;#x884C;&amp;#x6D41;&amp;#x7684;&amp;#x6700;&amp;#x5C0F;&amp;#x5355;&amp;#x5143;&amp;#xFF0C;&amp;#x7EBF;&amp;#x7A0B;&amp;#x662F;&amp;#x8F">
+<meta property="og:updated_time" content="2016-04-05T08:33:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Objective-C 多线程">
+<meta name="twitter:description" content="&amp;#x591A;&amp;#x7EBF;&amp;#x7A0B;1.&amp;#x57FA;&amp;#x672C;&amp;#x6982;&amp;#x5FF5;
+&amp;#x7EBF;&amp;#x7A0B;&amp;#xFF1A;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6267;&amp;#x884C;&amp;#x6D41;&amp;#x7684;&amp;#x6700;&amp;#x5C0F;&amp;#x5355;&amp;#x5143;&amp;#xFF0C;&amp;#x7EBF;&amp;#x7A0B;&amp;#x662F;&amp;#x8F">
+  
+    <link rel="alternative" href="/atom.xml" title="Madao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://sunzqcoder.github.io/img/HeadImage.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Madao</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Objective-C/" style="font-size: 20px;">Objective-C</a> <a href="/tags/UIView/" style="font-size: 10px;">UIView</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">人生如果跌到低谷，剩下的就只有向上爬了!</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Madao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://sunzqcoder.github.io/img/HeadImage.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Madao</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Objective-C-多线程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/24/Objective-C-多线程/" class="article-date">
+  	<time datetime="2016-03-24T08:13:45.000Z" itemprop="datePublished">2016-03-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Objective-C 多线程
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="&#x591A;&#x7EBF;&#x7A0B;"><a href="#&#x591A;&#x7EBF;&#x7A0B;" class="headerlink" title="&#x591A;&#x7EBF;&#x7A0B;"></a>&#x591A;&#x7EBF;&#x7A0B;</h2><p>1.&#x57FA;&#x672C;&#x6982;&#x5FF5;</p>
+<p>&#x7EBF;&#x7A0B;&#xFF1A;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x6D41;&#x7684;&#x6700;&#x5C0F;&#x5355;&#x5143;&#xFF0C;&#x7EBF;&#x7A0B;&#x662F;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F53;&#x3002;<br>&#x8FDB;&#x7A0B;&#xFF1A; &#x4E00;&#x4E2A;&#x5177;&#x6709;&#x4E00;&#x5B9A;&#x72EC;&#x7ACB;&#x529F;&#x80FD;&#x7684;&#x7A0B;&#x5E8F;&#x5173;&#x4E8E;&#x67D0;&#x4E2A;&#x6570;&#x636E;&#x96C6;&#x5408;&#x7684;&#x4E00;&#x6B21;&#x8FD0;&#x884C;&#x6D3B;&#x52A8;&#x3002;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;<br>&#x540C;&#x6B65;&#xFF1A; &#x53EA;&#x80FD;&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x6309;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#xFF0C;&#x4E0D;&#x5F00;&#x542F;&#x65B0;&#x7EBF;&#x7A0B;&#x3002;<br>&#x5F02;&#x6B65;&#xFF1A; &#x53EF;&#x4EE5;&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5F00;&#x542F;&#x591A;&#x4E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#xFF0C;&#x53EF;&#x4E0D;&#x6309;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x3002;<br>&#x961F;&#x5217;&#xFF1A; &#x88C5;&#x8F7D;&#x7EBF;&#x7A0B;&#x4EFB;&#x52A1;&#x7684;&#x961F;&#x5F62;&#x7ED3;&#x6784;&#x3002;<br>&#x5E76;&#x53D1;&#xFF1A; &#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x4E00;&#x8D77;&#x8FDB;&#x884C;&#x6267;&#x884C;&#x3002;<br>&#x4E32;&#x884C;&#xFF1A; &#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x53EA;&#x80FD;&#x4F9D;&#x6B21;&#x9010;&#x4E00;&#x5148;&#x540E;&#x6709;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x3002;</p>
+<a id="more"></a>
+<h3 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h3><p>&#x6BCF;&#x4E2A;NSThread&#x5BF9;&#x8C61;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x771F;&#x6B63;&#x6700;&#x539F;&#x59CB;&#x7684;&#x7EBF;&#x7A0B;&#x3002;</p>
+<p>1&#xFF09;&#x4F18;&#x70B9;&#xFF1A;NSThread &#x8F7B;&#x91CF;&#x7EA7;&#x6700;&#x4F4E;&#xFF0C;&#x76F8;&#x5BF9;&#x7B80;&#x5355;&#x3002;</p>
+<p>2&#xFF09;&#x7F3A;&#x70B9;&#xFF1A;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x6240;&#x6709;&#x7684;&#x7EBF;&#x7A0B;&#x6D3B;&#x52A8;&#xFF0C;&#x5982;&#x751F;&#x547D;&#x5468;&#x671F;&#x3001;&#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#x3001;&#x7761;&#x7720;&#x7B49;&#x3002;</p>
+<p>&#x4E09;&#x79CD;&#x5B9E;&#x73B0;&#x5F00;&#x542F;&#x7EBF;&#x7A0B;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<p>1.&#x52A8;&#x6001;&#x5B9E;&#x4F8B;&#x5316;</p>
+<pre><code>NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(loadImageSource:) object:imgUrl];
+thread.threadPriority = 1;        //&#x8BBE;&#x7F6E;&#x7EBF;&#x7A0B;&#x7684;&#x4F18;&#x5148;&#x7EA7;(0.0 - 1.0&#xFF0C;1.0&#x6700;&#x9AD8;&#x7EA7;)
+[thread start];
+</code></pre><p>2.&#x9759;&#x6001;&#x5B9E;&#x4F8B;&#x5316;</p>
+<pre><code>[NSThread detachNewThreadSelector:@selector(loadImageSource:) toTarget:self withObject:imgUrl];
+</code></pre><p>3.&#x9690;&#x5F0F;&#x5B9E;&#x4F8B;&#x5316;</p>
+<pre><code>[self performSelectorInBackground:@selector(loadImageSource:) withObject:imgUrl];
+</code></pre><p>4.NSThread &#x7684;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;</p>
+<pre><code>//&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;
+NSThread *current = [NSThread currentThread];
+
+//&#x83B7;&#x53D6;&#x4E3B;&#x7EBF;&#x7A0B;
+NSThread *main = [NSThread mainThread];
+
+//&#x6682;&#x505C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;
+[NSThread sleepForTimeInterval:2];
+
+//&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x901A;&#x4FE1;
+//&#x5728;&#x6307;&#x5B9A;&#x7EBF;&#x7A0B;&#x4E0A;&#x6267;&#x884C;&#x64CD;&#x4F5C;
+[self performSelector:@selector(run) onThread:thread withObject:nil waitUntilDone:YES]; 
+//&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#x6267;&#x884C;&#x64CD;&#x4F5C;
+[self performSelectorOnMainThread:@selector(run) withObject:nil waitUntilDone:YES]; 
+//&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x64CD;&#x4F5C;
+[self performSelector:@selector(run) withObject:nil];
+</code></pre><h3 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h3><p>&#x5B83;&#x662F;&#x82F9;&#x679C;&#x4E3A;&#x591A;&#x6838;&#x7684;&#x5E76;&#x884C;&#x8FD0;&#x7B97;&#x63D0;&#x51FA;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x81EA;&#x52A8;&#x5408;&#x7406;&#x5730;&#x5229;&#x7528;&#x66F4;&#x591A;&#x7684;CPU&#x5185;&#x6838;&#xFF08;&#x6BD4;&#x5982;&#x53CC;&#x6838;&#x3001;&#x56DB;&#x6838;&#xFF09;&#xFF0C;&#x6700;&#x91CD;&#x8981;&#x7684;&#x662F;&#x5B83;&#x4F1A;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#x7EBF;&#x7A0B;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x4E5F;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x65B9;&#x4FBF;&#x3002;</p>
+<p>&#x5728; GCD &#x4E2D;&#x52A0;&#x5165;&#x4E86;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#xFF1A;<strong>&#x4EFB;&#x52A1;</strong>&#x548C;<strong>&#x961F;&#x5217;</strong></p>
+<p>1.&#x521B;&#x5EFA;UI&#x4E3B;&#x7EBF;&#x7A0B;&#x961F;&#x5217;&#xFF0C;&#x7528;&#x4E8E;&#x5237;&#x65B0; UI</p>
+<pre><code>dispatch_queue_t queue = dispatch_get_main_queue();
+</code></pre><p>2.&#x521B;&#x5EFA;&#x4E32;&#x884C;&#x961F;&#x5217;</p>
+<pre><code>dispatch_queue_t queue = dispatch_queue_create(&quot;minggo.app.com&quot;, NULL);
+</code></pre><p>3.&#x521B;&#x5EFA;&#x5E76;&#x884C;&#x961F;&#x5217;</p>
+<pre><code>dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+</code></pre><p>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x5206;&#x522B;&#x4F7F;&#x7528; DISPATCH_QUEUE_PRIORITY_HIGH &#x548C; DISPATCH_QUEUE_PRIORITY_LOW &#x4E24;&#x4E2A;&#x5E38;&#x91CF;&#x6765;&#x83B7;&#x53D6;&#x4F18;&#x5148;&#x7EA7;&#x3002;</p>
+<p>4.&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5B9E;&#x73B0;</p>
+<pre><code>//&#x540E;&#x53F0;&#x6267;&#x884C;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;
+dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    [self loadImageSource:imgUrl1];
+});
+
+//UI&#x7EBF;&#x7A0B;&#x6267;&#x884C;(&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x6D4B;&#x8BD5;&#xFF0C;&#x957F;&#x65F6;&#x95F4;&#x52A0;&#x8F7D;&#x5185;&#x5BB9;&#x4E0D;&#x653E;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;)
+dispatch_async(dispatch_get_main_queue(), ^{
+    [self loadImageSource:imgUrl1];
+});
+
+//&#x4E00;&#x6B21;&#x6027;&#x6267;&#x884C;(&#x5E38;&#x7528;&#x6765;&#x5199;&#x5355;&#x4F8B;)
+static dispatch_once_t onceToken;
+dispatch_once(&amp;onceToken, ^{
+    [self loadImageSource:imgUrl1];
+});
+
+//&#x5E76;&#x53D1;&#x5730;&#x6267;&#x884C;&#x5FAA;&#x73AF;&#x8FED;&#x4EE3;
+dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+size_t count = 10;
+dispatch_apply(count, queue, ^(size_t i) {
+    NSLog(@&quot;&#x5FAA;&#x73AF;&#x6267;&#x884C;&#x7B2C;%li&#x6B21;&quot;,i);
+    [self loadImageSource:imgUrl1];
+});
+
+//&#x5EF6;&#x8FDF;&#x6267;&#x884C;
+double delayInSeconds = 2.0;
+dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    [self loadImageSource:imgUrl1];
+});
+
+//&#x81EA;&#x5B9A;&#x4E49;
+dispatch_queue_t urls_queue = dispatch_queue_create(&quot;minggo.app.com&quot;, NULL);
+dispatch_async(urls_queue, ^{
+    [self loadImageSource:imgUrl1];
+});
+</code></pre><h3 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h3><p>NSOperation&#x662F;&#x82F9;&#x679C;&#x516C;&#x53F8;&#x5BF9; GCD &#x7684;&#x5C01;&#x88C5;&#xFF0C;&#x5B8C;&#x5168;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x3002;&#x5E76;&#x4E14;&#xFF0C;&#x81EA;&#x5E26;&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;&#x3002;</p>
+<p>&#x4E3B;&#x8981;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF1A;&#x5B9E;&#x4F8B;&#x5316;NSOperation&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x7ED1;&#x5B9A;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x521B;&#x5EFA;NSOperationQueue&#x961F;&#x5217;&#xFF0C;&#x5C06;NSOperation&#x5B9E;&#x4F8B;&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#x3002;&#x7CFB;&#x7EDF;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;NSOperationQueue&#x961F;&#x5217;&#x4E2D;&#x68C0;&#x6D4B;&#x53D6;&#x51FA;&#x548C;&#x6267;&#x884C;NSOperation&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>NSOperation &#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x5C01;&#x88C5;&#x4EFB;&#x52A1;&#xFF0C;&#x4F46;&#x5B83;&#x6709; 2 &#x4E2A;&#x5B50;&#x7C7B;&#x7528;&#x4E8E;&#x5C01;&#x88C5;&#x4EFB;&#x52A1;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;NSInvocationOperation &#x548C; NSBlockOperation&#x3002;</p>
+<p>1.NSInvocationOperation &#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x3002;</p>
+<pre><code>NSInvocationOperation *invocationOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(loadImageSource:) object:imgUrl];
+
+//[invocationOperation start];//&#x76F4;&#x63A5;&#x4F1A;&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E3B;&#x7EBF;&#x7A0B;&#x6267;&#x884C;
+
+NSOperationQueue *queue = [[NSOperationQueue alloc]init];
+[queue addOperation:invocationOperation];
+</code></pre><p>2.NSBlockOperation &#x521B;&#x5EFA;&#x7EBF;&#x7A0B;</p>
+<pre><code>NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
+    [self loadImageSource:imgUrl];
+}];
+
+NSOperationQueue *queue = [[NSOperationQueue alloc]init];
+[queue addOperation:blockOperation];
+</code></pre><p>3.&#x81EA;&#x5B9A;&#x4E49; NSOperation &#x5B50;&#x7C7B;&#x5B9E;&#x73B0; main &#x65B9;&#x6CD5;</p>
+<pre><code>//main&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;
+-(void)main {    
+    // Do somthing
+}
+
+//&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x5B9E;&#x4F8B;&#x5E76;&#x6DFB;&#x52A0;&#x5230;&#x961F;&#x5217;&#x4E2D;
+LoadImageOperation *imageOperation = [LoadImageOperation new];
+imageOperation.loadDelegate = self;
+imageOperation.imgUrl = imgUrl;
+
+NSOperationQueue *queue = [[NSOperationQueue alloc]init];
+[queue addOperation:imageOperation];
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/24/Objective-C-线程同步/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Objective-C 线程同步
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/22/Objective-C-动态特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Objective-C 动态特性</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Objective-C-多线程" data-title="Objective-C 多线程" data-url="http://sunzqcoder.github.io/2016/03/24/Objective-C-多线程/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Madao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Objective-C 协议和委托 | Madao&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x534F;&amp;#x8BAE;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C 协议和委托">
+<meta property="og:url" content="http://sunzqcoder.github.io/2016/02/24/Objective-C-协议和委托/index.html">
+<meta property="og:site_name" content="Madao's Blog">
+<meta property="og:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x534F;&amp;#x8BAE;">
+<meta property="og:updated_time" content="2016-03-14T13:33:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Objective-C 协议和委托">
+<meta name="twitter:description" content="&amp;#x7248;&amp;#x6743;&amp;#x8BF4;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x672A;&amp;#x7ECF;&amp;#x5141;&amp;#x8BB8;&amp;#xFF0C;&amp;#x4E0D;&amp;#x5F97;&amp;#x8F6C;&amp;#x8F7D;&amp;#x3002;&amp;#x534F;&amp;#x8BAE;">
+  
+    <link rel="alternative" href="/atom.xml" title="Madao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://sunzqcoder.github.io/img/HeadImage.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Madao</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Objective-C/" style="font-size: 20px;">Objective-C</a> <a href="/tags/UIView/" style="font-size: 10px;">UIView</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">人生如果跌到低谷，剩下的就只有向上爬了!</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Madao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://sunzqcoder.github.io/img/HeadImage.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Madao</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Objective-C-协议和委托" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/24/Objective-C-协议和委托/" class="article-date">
+  	<time datetime="2016-02-24T07:19:13.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Objective-C 协议和委托
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"><a href="#&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;" class="headerlink" title="&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;"></a>&#x7248;&#x6743;&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x672A;&#x7ECF;&#x5141;&#x8BB8;&#xFF0C;&#x4E0D;&#x5F97;&#x8F6C;&#x8F7D;&#x3002;</h5><h2 id="&#x534F;&#x8BAE;-protocol"><a href="#&#x534F;&#x8BAE;-protocol" class="headerlink" title="&#x534F;&#x8BAE; (protocol)"></a>&#x534F;&#x8BAE; (protocol)</h2><p>1.&#x534F;&#x8BAE;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;</p>
+<p>&#x534F;&#x8BAE;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x7ED3;&#x6784;&#xFF0C;&#x7528;&#x4E8E;&#x58F0;&#x660E;&#x4E13;&#x95E8;&#x88AB;&#x5176;&#x4ED6;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x534F;&#x8BAE;&#x5728;&#x4EE5;&#x4E0B;&#x573A;&#x5408;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF1A;</p>
+<p>&#xB7; &#x9700;&#x8981;&#x7531;&#x5176;&#x4ED6;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002;<br>&#xB7; &#x58F0;&#x660E;&#x672A;&#x77E5;&#x7C7B;&#x7684;&#x63A5;&#x53E3;&#x3002;<br>&#xB7; &#x4E24;&#x4E2A;&#x7C7B;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x3002;</p>
+<a id="more"></a>
+<p>2.&#x534F;&#x8BAE;&#x7684;&#x5B9A;&#x4E49;&#x53CA;&#x4F7F;&#x7528;</p>
+<pre><code>@protocol &#x534F;&#x8BAE;&#x540D; &lt;&#x7236;&#x534F;&#x8BAE;&gt;
+
+&#x58F0;&#x660E;&#x65B9;&#x6CD5;
+
+@end
+</code></pre><p>&#x534F;&#x8BAE;&#x7684;&#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x5B57;</p>
+<p>@required&#xFF1A;&#x8868;&#x793A;&#x5FC5;&#x987B;&#x5F3A;&#x5236;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x3002;<br>@optional&#xFF1A;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x6709;&#x9009;&#x62E9;&#x6027;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x534F;&#x8BAE;&#x7684;&#x58F0;&#x660E;&#xFF1A;</p>
+<pre><code>@protocol HelloProtocol &lt;NSObject&gt;
+
+@optional
+- (void)optionalMethod;
+
+@required
+- (void)requiredMethod;
+
+@end
+</code></pre><p>&#x534F;&#x8BAE;&#x7684;&#x4F7F;&#x7528;</p>
+<pre><code>@interface Person : NSObject &lt;HelloProtocol&gt;
+
+@end
+</code></pre><p>&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#xFF0C;&#x5373; Person &#x7C7B;&#x4F7F;&#x7528; HelloProtocol &#x534F;&#x8BAE;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5C06;&#x591A;&#x4E2A;&#x7C7B;&#x4E2D;&#x5171;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x653E;&#x5230;&#x534F;&#x8BAE;&#x4E2D;&#xFF0C;&#x8BA9;&#x8FD9;&#x4E9B;&#x7C7B;&#x90FD;&#x9075;&#x5B88;&#x8FD9;&#x4E2A;&#x534F;&#x8BAE;&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;&#x534F;&#x8BAE;&#x91CC;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5373;&#x53EF;&#x62E5;&#x6709;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x6548;&#x51CF;&#x5C11;&#x4EE3;&#x7801;&#x7684;&#x91CD;&#x590D;&#x6027;&#x3002;</p>
+<h2 id="&#x59D4;&#x6258;&#x6A21;&#x5F0F;-delegate"><a href="#&#x59D4;&#x6258;&#x6A21;&#x5F0F;-delegate" class="headerlink" title="&#x59D4;&#x6258;&#x6A21;&#x5F0F; (delegate)"></a>&#x59D4;&#x6258;&#x6A21;&#x5F0F; (delegate)</h2><p>1.&#x6982;&#x5FF5;</p>
+<p>&#x59D4;&#x6258;&#x662F;&#x6307;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x673A;&#x4F1A;&#x5BF9;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x884C;&#x4E3A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x505A;&#x51FA;&#x7684;&#x53CD;&#x5E94;&#xFF0C;&#x5176;&#x57FA;&#x672C;&#x601D;&#x60F3;&#x4E3A;&#xFF0C;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x534F;&#x540C;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#x5BF9;&#x8C61; A &#x6709;&#x4E00;&#x9879;&#x4E8B;&#x60C5;&#x9700;&#x8981;&#x505A;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x8C61; A &#x4E0D;&#x81EA;&#x5DF1;&#x505A;&#xFF0C;&#x4ED6;&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61; B &#x6765;&#x505A;&#x3002;</p>
+<p>&#x5373; A &#x6709;&#x9700;&#x6C42;&#x4F46;&#x4E0D;&#x76F4;&#x63A5;&#x505A;&#xFF0C;&#x901A;&#x8FC7; Delegate &#x59D4;&#x6258;&#x7ED9; B &#x53BB;&#x505A;&#x3002;</p>
+<p>&#x59D4;&#x6258;&#x662F; Objective-C &#x4E2D;&#x7684;&#x4E00;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x4E0E;&#x534F;&#x8BAE;&#x7684;&#x4F7F;&#x7528;&#x662F;&#x5206;&#x4E0D;&#x5F00;&#x7684;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5728;&#x73ED;&#x7EA7;&#x91CC;&#xFF0C;&#x6559;&#x5E08;&#x8D1F;&#x8D23;&#x6559;&#x5BFC;&#x5B66;&#x751F;&#x548C;&#x6279;&#x6539;&#x4F5C;&#x4E1A;&#xFF0C;&#x800C;&#x6536;&#x53D6;&#x4F5C;&#x4E1A;&#x548C;&#x4F20;&#x8FBE;&#x8001;&#x5E08;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x5219;&#x6709;&#x52A9;&#x6559;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x52A9;&#x6559;&#x534F;&#x8BAE;&#xFF1A; </p>
+<p>assistantProtocol.h</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@protocol assistantProtocol &lt;NSObject&gt;
+
+- (void)notice;                 //&#x901A;&#x77E5;&#x6D88;&#x606F;
+- (void)collectHomeWork;        //&#x6536;&#x53D6;&#x4F5C;&#x4E1A;
+
+@end
+</code></pre><p>&#x7136;&#x540E;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x52A9;&#x6559;&#x7C7B;&#xFF1A;</p>
+<p>Assistant.h</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &quot;assistantProtocol.h&quot;
+
+@interface Assistant : NSObject &lt;assistantProtocol&gt;  //&#x5B9E;&#x73B0; assistantProtocol &#x534F;&#x8BAE;
+
+@end
+</code></pre><p>Assistant.m</p>
+<pre><code>#import &quot;Assistant.h&quot;
+
+@implementation Assistant
+
+//&#x901A;&#x77E5;&#x4FE1;&#x606F;
+- (void)notice{
+    NSLog(@&quot;Notice Message.&quot;);
+}
+
+//&#x6536;&#x53D6;&#x4F5C;&#x4E1A;
+- (void)collectHomeWork{
+    NSLog(@&quot;Collect the HomeWork.&quot;);
+}
+
+@end
+</code></pre><p>&#x6559;&#x5E08;&#x7C7B;&#xFF1A;</p>
+<p>Teacher.h</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &quot;assistantProtocol.h&quot;
+
+@interface Teacher : NSObject
+
+//&#x8BE5;&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x52A9;&#x6559;&#x5BF9;&#x8C61;&#xFF0C;&#x6B64;&#x5BF9;&#x8C61;&#x5FC5;&#x987B;&#x5B9E;&#x73B0; assistantProtocol &#x534F;&#x8BAE;&#x3002;
+@property (nonatomic, retain) id &lt;assistantProtocol&gt; delegate;
+
+- (void)teach;                 //&#x6559;&#x80B2;&#x5B66;&#x751F;
+- (void)checkHomeWork;         //&#x68C0;&#x67E5;&#x4F5C;&#x4E1A;
+- (void)assNotice;             //&#x59D4;&#x6258;&#x52A9;&#x6559;&#x901A;&#x77E5;&#x4FE1;&#x606F;
+- (void)assCollectHomeWork;    //&#x59D4;&#x6258;&#x52A9;&#x6559;&#x6536;&#x53D6;&#x4F5C;&#x4E1A;
+
+@end
+</code></pre><p>Teacher.m</p>
+<pre><code>#import &lt;Teacher.h&gt;
+
+@implementation Teacher
+
+- (void)teach{
+    NSLog(@&quot;Teach Students.&quot;);
+}
+
+- (void)checkHomeWork{
+    NSLog(@&quot;Check the HomeWork.&quot;);
+}
+
+- (void)notice{
+    [_delegate notice];
+}
+
+- (void)collectHomeWork{
+    [_delegate collectHomeWork];
+}
+
+@end
+</code></pre><p>&#x5B9E;&#x73B0; main.m</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &lt;Teacher.h&gt;
+#import &lt;Assistant.h&gt;
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        //&#x5B9E;&#x4F8B;&#x5316;&#x6559;&#x5E08;&#x548C;&#x52A9;&#x6559;&#x5BF9;&#x8C61;
+        Teacher *teacher = [[Teacher alloc] init];
+        Assistant *assistant = [[Assistant alloc] init];
+
+        //&#x8BBE;&#x7F6E;&#x6559;&#x5E08;&#x5BF9;&#x8C61;&#x7684;&#x4EE3;&#x7406;&#x4E3A;&#x52A9;&#x6559;
+        teacher.delegate = assistant;
+
+        [teacher teach];
+        [teacher checkHomeWork];
+
+        [teacher assNotice];
+        [teacher assCollectHomeWork];
+    }
+return 0;
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/25/Objective-C-代码块/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Objective-C 代码块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/23/Objective-C 类目和延展/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Objective-C 类目和延展</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Objective-C-协议和委托" data-title="Objective-C 协议和委托" data-url="http://sunzqcoder.github.io/2016/02/24/Objective-C-协议和委托/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Madao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
