@@ -10,13 +10,13 @@
 1.Mod">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发之-MVC设计模式">
-<meta property="og:url" content="http://sunzqcoder.github.io/2016/03/25/iOS开发之-MVC设计模式/index.html">
+<meta property="og:url" content="http://sunzqcoder.github.io/2016/03/29/iOS开发之-MVC设计模式/index.html">
 <meta property="og:site_name" content="Madao's Blog">
 <meta property="og:description" content="MVC &amp;#x8BBE;&amp;#x8BA1;&amp;#x6A21;&amp;#x5F0F;Model-View-Controller&amp;#xFF0C;&amp;#x7B80;&amp;#x79F0; MVC&amp;#xFF0C;&amp;#x662F; iOS &amp;#x5F00;&amp;#x53D1;&amp;#x4E2D;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x8BBE;&amp;#x8BA1;&amp;#x6A21;&amp;#x5F0F;&amp;#x3002;
 1.Mod">
-<meta property="og:image" content="http://sunzqcoder.github.io/2016/03/25/iOS开发之-MVC设计模式/MVC.png">
-<meta property="og:image" content="http://sunzqcoder.github.io/2016/03/25/iOS开发之-MVC设计模式/MVCs.png">
-<meta property="og:updated_time" content="2016-04-05T08:31:30.000Z">
+<meta property="og:image" content="http://sunzqcoder.github.io/2016/03/29/iOS开发之-MVC设计模式/MVC.png">
+<meta property="og:image" content="http://sunzqcoder.github.io/2016/03/29/iOS开发之-MVC设计模式/MVCs.png">
+<meta property="og:updated_time" content="2016-04-05T08:59:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发之-MVC设计模式">
 <meta name="twitter:description" content="MVC &amp;#x8BBE;&amp;#x8BA1;&amp;#x6A21;&amp;#x5F0F;Model-View-Controller&amp;#xFF0C;&amp;#x7B80;&amp;#x79F0; MVC&amp;#xFF0C;&amp;#x662F; iOS &amp;#x5F00;&amp;#x53D1;&amp;#x4E2D;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x8BBE;&amp;#x8BA1;&amp;#x6A21;&amp;#x5F0F;&amp;#x3002;
@@ -180,8 +180,8 @@
       <div class="body-wrap"><article id="post-iOS开发之-MVC设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/25/iOS开发之-MVC设计模式/" class="article-date">
-  	<time datetime="2016-03-25T08:27:40.000Z" itemprop="datePublished">2016-03-25</time>
+      <a href="/2016/03/29/iOS开发之-MVC设计模式/" class="article-date">
+  	<time datetime="2016-03-29T08:27:40.000Z" itemprop="datePublished">2016-03-29</time>
 </a>
     </div>
   
@@ -231,7 +231,7 @@
 <p>3.Controller &#x63A7;&#x5236;&#x5668;</p>
 <p>&#x63A7;&#x5236;&#x5668;&#x7528;&#x4E8E;&#x63A7;&#x5236; View &#x5448;&#x73B0;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x4EE5;&#x53CA;&#x786E;&#x4FDD; View &#x548C; Model &#x4E4B;&#x95F4;&#x6570;&#x636E;&#x7684;&#x540C;&#x6B65;&#x3002;</p>
 <h3 id="MVC-&#x901A;&#x4FE1;&#x673A;&#x5236;"><a href="#MVC-&#x901A;&#x4FE1;&#x673A;&#x5236;" class="headerlink" title="MVC &#x901A;&#x4FE1;&#x673A;&#x5236;"></a>MVC &#x901A;&#x4FE1;&#x673A;&#x5236;</h3><p>Model &#x548C; View &#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x76F8;&#x4E92;&#x901A;&#x4FE1;&#xFF0C;&#x5FC5;&#x987B;&#x901A;&#x8FC7; Controller &#x4F20;&#x9012;&#xFF0C;&#x5F53; Model &#x4E2D;&#x7684;&#x6570;&#x636E;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#x7684; View &#x66F4;&#x65B0;&#xFF0C;&#x4E3A;&#x6B64; iOS &#x63D0;&#x4F9B;&#x4E86; NSnotification &#x548C; KVO &#x4E24;&#x79CD;&#x673A;&#x5236;&#x3002;</p>
-<p><img src="/2016/03/25/iOS&#x5F00;&#x53D1;&#x4E4B;-MVC&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;/MVC.png" alt="MVC"></p>
+<p><img src="/2016/03/29/iOS&#x5F00;&#x53D1;&#x4E4B;-MVC&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;/MVC.png" alt="MVC"></p>
 <p>&#x5728;&#x4E0A;&#x56FE;&#x4E2D;&#xFF0C;&#x7EFF;&#x8272;&#x7684;&#x7BAD;&#x5934;&#x4EE3;&#x8868;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#xFF0C;&#x63A7;&#x5236;&#x5668;&#x9700;&#x8981;&#x77E5;&#x9053; Model &#x7684;&#x4E00;&#x5207;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x540C; Model &#x5B8C;&#x5168;&#x901A;&#x4FE1;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x6309;&#x7167;&#x4EFB;&#x4F55;&#x65B9;&#x5F0F;&#x4F7F;&#x7528;&#x5176;&#x516C;&#x5171; API&#xFF0C;&#x56E0;&#x4E3A;&#x63A7;&#x5236;&#x5668;&#x7684;&#x5DE5;&#x4F5C;&#x5C31;&#x662F;&#x5C06; Model &#x5448;&#x73B0;&#x7ED9;&#x7528;&#x6237;&#x3002;&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x4ECE;&#x63A7;&#x5236;&#x5668;&#x5230;&#x89C6;&#x56FE;&#xFF0C;&#x901A;&#x4FE1;&#x4E5F;&#x662F;&#x4E0D;&#x53D7;&#x9650;&#x5236;&#x7684;&#xFF0C;&#x5F53;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4ECE;&#x63A7;&#x5236;&#x5668;&#x6307;&#x5411; View &#x65F6;&#xFF0C;&#x5C06;&#x5B83;&#x79F0;&#x4F5C; outlet&#x3002;</p>
 <p>Model &#x548C; View &#x4E4B;&#x95F4;&#x662F;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x901A;&#x4FE1;&#x7684;&#xFF0C;&#x56E0;&#x4E3A; Model &#x662F;&#x5B8C;&#x5168;&#x72EC;&#x7ACB;&#x4E8E; UI &#x7684;&#xFF0C;&#x5B83;&#x7EDD;&#x5BF9;&#x4E0D;&#x80FD;&#x4E0E;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x9700;&#x8981; Controller &#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x3002;</p>
 <p>&#x4E00;&#x3001;&#x5F53; View &#x5F80;&#x56DE;&#x4E0E; Controller &#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x65F6;&#xFF0C;iOS &#x6709;&#x4E09;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x6A21;&#x5F0F;&#xFF1A;</p>
@@ -253,7 +253,7 @@
 </blockquote>
 <p>&#x4E09;&#x3001;&#x591A;&#x5C4F;&#x5E55; app &#x7684; MVC</p>
 <p>&#x53EF;&#x4EE5;&#x5408;&#x5E76;&#x591A;&#x4E2A; MVC&#xFF0C;&#x56E0;&#x4E3A; MVC &#x80FD;&#x591F;&#x5C06;&#x53E6;&#x4E00;&#x4E2A; MVC &#x4F5C;&#x4E3A;&#x89C6;&#x56FE;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;</p>
-<p><img src="/2016/03/25/iOS&#x5F00;&#x53D1;&#x4E4B;-MVC&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;/MVCs.png" alt="MVC"></p>
+<p><img src="/2016/03/29/iOS&#x5F00;&#x53D1;&#x4E4B;-MVC&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;/MVCs.png" alt="MVC"></p>
 
       
     </div>
@@ -263,18 +263,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/25/iOS-应用程序的生命周期/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/04/05/iOS开发之-UIView/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          iOS 应用程序的生命周期
+          iOS开发之-UIView
         
       </div>
     </a>
   
   
-    <a href="/2016/03/24/Objective-C-线程同步/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Objective-C 线程同步</div>
+    <a href="/2016/03/27/UIView-常见属性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">UIView 常见属性</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -309,7 +309,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="iOS开发之-MVC设计模式" data-title="iOS开发之-MVC设计模式" data-url="http://sunzqcoder.github.io/2016/03/25/iOS开发之-MVC设计模式/"></div>
+	<div class="ds-thread" data-thread-key="iOS开发之-MVC设计模式" data-title="iOS开发之-MVC设计模式" data-url="http://sunzqcoder.github.io/2016/03/29/iOS开发之-MVC设计模式/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
